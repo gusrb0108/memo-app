@@ -1,0 +1,356 @@
+[1mdiff --git a/.cursor/mcp.json b/.cursor/mcp.json[m
+[1mindex 80e201f..6d54bd3 100644[m
+[1m--- a/.cursor/mcp.json[m
+[1m+++ b/.cursor/mcp.json[m
+[36m@@ -5,10 +5,10 @@[m
+       "args": [[m
+         "-y",[m
+         "@supabase/mcp-server-supabase@0.4.5",[m
+[31m-        "--project-ref=<project-ref>"[m
+[32m+[m[32m        "--project-ref=rngpptqtreyrclxjtytj"[m
+       ],[m
+       "env": {[m
+[31m-        "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"[m
+[32m+[m[32m        "SUPABASE_ACCESS_TOKEN": "sbp_c9d7cbbb012f2a6db4efdca72cd9b4e647fd0c13"[m
+       }[m
+     },[m
+     "playwright-mcp": {[m
+[1mdiff --git a/create-memo-scenario.md b/create-memo-scenario.md[m
+[1mnew file mode 100644[m
+[1mindex 0000000..1eee57b[m
+[1m--- /dev/null[m
+[1m+++ b/create-memo-scenario.md[m
+[36m@@ -0,0 +1,15 @@[m
+[32m+[m[32m# E2E 테스트 시나리오: 새 메모 생성[m
+[32m+[m
+[32m+[m[32m## 목적[m
+[32m+[m
+[32m+[m[32m사용자가 새로운 메모를 성공적으로 생성하고 목록에서 확인할 수 있는지 검증합니다.[m
+[32m+[m
+[32m+[m[32m## 시나리오 단계[m
+[32m+[m
+[32m+[m[32m1. 메인 페이지에서 '새 메모' 버튼을 클릭합니다.[m
+[32m+[m[32m2. 메모 생성 폼이 나타나는지 확인합니다.[m
+[32m+[m[32m3. '제목' 입력란에 "새 테스트 메모"를 입력합니다.[m
+[32m+[m[32m4. '내용' 입력란에 "이것은 E2E 테스트를 위한 메모입니다."를 입력합니다.[m
+[32m+[m[32m5. '카테고리'를 "테스트"로 선택합니다.[m
+[32m+[m[32m6. '저장' 버튼을 클릭합니다.[m
+[32m+[m[32m7. 메모 목록에 "새 테스트 메모"가 성공적으로 추가되었는지 확인합니다.[m
+[1mdiff --git a/delete-memo-scenario.md b/delete-memo-scenario.md[m
+[1mnew file mode 100644[m
+[1mindex 0000000..87ef18c[m
+[1m--- /dev/null[m
+[1m+++ b/delete-memo-scenario.md[m
+[36m@@ -0,0 +1,13 @@[m
+[32m+[m[32m# E2E 테스트 시나리오: 메모 삭제[m
+[32m+[m
+[32m+[m[32m## 목적[m
+[32m+[m
+[32m+[m[32m사용자가 기존 메모를 성공적으로 삭제할 수 있는지 검증합니다.[m
+[32m+[m
+[32m+[m[32m## 시나리오 단계[m
+[32m+[m
+[32m+[m[32m1. 메인 페이지의 메모 목록에서 삭제할 메모의 '삭제' 버튼을 클릭합니다.[m
+[32m+[m[32m2. "정말로 삭제하시겠습니까?"와 같은 확인 대화상자가 나타나는지 확인합니다.[m
+[32m+[m[32m3. '확인' 버튼을 클릭합니다.[m
+[32m+[m[32m4. 해당 메모가 목록에서 사라졌는지 확인합니다.[m
+[32m+[m[32m5. 총 메모 개수가 1 감소했는지 확인합니다.[m
+[1mdiff --git a/edit-memo-scenario.md b/edit-memo-scenario.md[m
+[1mnew file mode 100644[m
+[1mindex 0000000..0657ef8[m
+[1m--- /dev/null[m
+[1m+++ b/edit-memo-scenario.md[m
+[36m@@ -0,0 +1,15 @@[m
+[32m+[m[32m# E2E 테스트 시나리오: 메모 수정[m
+[32m+[m
+[32m+[m[32m## 목적[m
+[32m+[m
+[32m+[m[32m사용자가 기존 메모의 내용을 성공적으로 수정할 수 있는지 검증합니다.[m
+[32m+[m
+[32m+[m[32m## 시나리오 단계[m
+[32m+[m
+[32m+[m[32m1. 메인 페이지의 메모 목록에서 수정할 메모의 '편집' 버튼을 클릭합니다.[m
+[32m+[m[32m2. 메모 수정 폼으로 이동하는지 확인합니다.[m
+[32m+[m[32m3. 기존 제목과 내용이 폼에 채워져 있는지 확인합니다.[m
+[32m+[m[32m4. 제목을 "수정된 테스트 메모"로 변경합니다.[m
+[32m+[m[32m5. 내용을 "이 메모는 E2E 테스트를 통해 수정되었습니다."로 변경합니다.[m
+[32m+[m[32m6. '저장' 버튼을 클릭합니다.[m
+[32m+[m[32m7. 메모 목록 또는 상세 보기에서 수정된 내용이 올바르게 반영되었는지 확인합니다.[m
+[1mdiff --git a/filter-memo-scenario.md b/filter-memo-scenario.md[m
+[1mnew file mode 100644[m
+[1mindex 0000000..6abd0a6[m
+[1m--- /dev/null[m
+[1m+++ b/filter-memo-scenario.md[m
+[36m@@ -0,0 +1,12 @@[m
+[32m+[m[32m# E2E 테스트 시나리오: 카테고리 필터링[m
+[32m+[m
+[32m+[m[32m## 목적[m
+[32m+[m
+[32m+[m[32m사용자가 카테고리를 기준으로 메모 목록을 필터링할 수 있는지 검증합니다.[m
+[32m+[m
+[32m+[m[32m## 시나리오 단계[m
+[32m+[m
+[32m+[m[32m1. 메인 페이지의 카테고리 드롭다운 메뉴를 클릭합니다.[m
+[32m+[m[32m2. 특정 카테고리(예: "업무")를 선택합니다.[m
+[32m+[m[32m3. 선택한 카테고리에 해당하는 메모만 목록에 표시되는지 확인합니다.[m
+[32m+[m[32m4. "전체 카테고리"를 다시 선택하면 모든 메모가 표시되는지 확인합니다.[m
+[1mdiff --git a/package-lock.json b/package-lock.json[m
+[1mindex f40a86c..be75dd0 100644[m
+[1m--- a/package-lock.json[m
+[1m+++ b/package-lock.json[m
+[36m@@ -8,6 +8,7 @@[m
+       "name": "memo-app",[m
+       "version": "0.1.0",[m
+       "dependencies": {[m
+[32m+[m[32m        "@supabase/supabase-js": "^2.53.0",[m
+         "@uiw/react-md-editor": "^4.0.8",[m
+         "next": "15.4.4",[m
+         "react": "19.1.0",[m
+[36m@@ -945,6 +946,81 @@[m
+       "integrity": "sha512-5EwMtOqvJMMa3HbmxLlF74e+3/HhwBTMcvt3nqVJgGCozO6hzIPOBlwm8mGVNR9SN2IJpxSnlxczyDjcn7qIyw==",[m
+       "dev": true[m
+     },[m
+[32m+[m[32m    "node_modules/@supabase/auth-js": {[m
+[32m+[m[32m      "version": "2.71.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@supabase/auth-js/-/auth-js-2.71.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-mMIQHBRc+SKpZFRB2qtupuzulaUhFYupNyxqDj5Jp/LyPvcWvjaJzZzObv6URtL/O6lPxkanASnotGtNpS3H2Q==",[m
+[32m+[m[32m      "license": "MIT",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "@supabase/node-fetch": "^2.6.14"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/@supabase/functions-js": {[m
+[32m+[m[32m      "version": "2.4.5",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@supabase/functions-js/-/functions-js-2.4.5.tgz",[m
+[32m+[m[32m      "integrity": "sha512-v5GSqb9zbosquTo6gBwIiq7W9eQ7rE5QazsK/ezNiQXdCbY+bH8D9qEaBIkhVvX4ZRW5rP03gEfw5yw9tiq4EQ==",[m
+[32m+[m[32m      "license": "MIT",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "@supabase/node-fetch": "^2.6.14"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/@supabase/node-fetch": {[m
+[32m+[m[32m      "version": "2.6.15",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@supabase/node-fetch/-/node-fetch-2.6.15.tgz",[m
+[32m+[m[32m      "integrity": "sha512-1ibVeYUacxWYi9i0cf5efil6adJ9WRyZBLivgjs+AUpewx1F3xPi7gLgaASI2SmIQxPoCEjAsLAzKPgMJVgOUQ==",[m
+[32m+[m[32m      "license": "MIT",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "whatwg-url": "^5.0.0"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": "4.x || >=6.0.0"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/@supabase/postgrest-js": {[m
+[32m+[m[32m      "version": "1.19.4",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@supabase/postgrest-js/-/postgrest-js-1.19.4.tgz",[m
+[32m+[m[32m      "integrity": "sha512-O4soKqKtZIW3olqmbXXbKugUtByD2jPa8kL2m2c1oozAO11uCcGrRhkZL0kVxjBLrXHE0mdSkFsMj7jDSfyNpw==",[m
+[32m+[m[32m      "license": "MIT",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "@supabase/node-fetch": "^2.6.14"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/@supabase/realtime-js": {[m
+[32m+[m[32m      "version": "2.11.15",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@supabase/realtime-js/-/realtime-js-2.11.15.tgz",[m
+[32m+[m[32m      "integrity": "sha512-HQKRnwAqdVqJW/P9TjKVK+/ETpW4yQ8tyDPPtRMKOH4Uh3vQD74vmj353CYs8+YwVBKubeUOOEpI9CT8mT4obw==",[m
+[32m+[m[32m      "license": "MIT",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "@supabase/node-fetch": "^2.6.13",[m
+[32m+[m[32m        "@types/phoenix": "^1.6.6",[m
+[32m+[m[32m        "@types/ws": "^8.18.1",[m
+[32m+[m[32m        "isows": "^1.0.7",[m
+[32m+[m[32m        "ws": "^8.18.2"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/@supabase/storage-js": {[m
+[32m+[m[32m      "version": "2.10.4",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@supabase/storage-js/-/storage-js-2.10.4.tgz",[m
+[32m+[m[32m      "integrity": "sha512-cvL02GarJVFcNoWe36VBybQqTVRq6wQSOCvTS64C+eyuxOruFIm1utZAY0xi2qKtHJO3EjKaj8iWJKySusDmAQ==",[m
+[32m+[m[32m      "license": "MIT",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "@supabase/node-fetch": "^2.6.14"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/@supabase/supabase-js": {[m
+[32m+[m[32m      "version": "2.53.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@supabase/supabase-js/-/supabase-js-2.53.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-Vg9sl0oFn55cCPaEOsDsRDbxOVccxRrK/cikjL1XbywHEOfyA5SOOEypidMvQLwgoAfnC2S4D9BQwJDcZs7/TQ==",[m
+[32m+[m[32m      "license": "MIT",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "@supabase/auth-js": "2.71.1",[m
+[32m+[m[32m        "@supabase/functions-js": "2.4.5",[m
+[32m+[m[32m        "@supabase/node-fetch": "2.6.15",[m
+[32m+[m[32m        "@supabase/postgrest-js": "1.19.4",[m
+[32m+[m[32m        "@supabase/realtime-js": "2.11.15",[m
+[32m+[m[32m        "@supabase/storage-js": "^2.10.4"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "node_modules/@swc/helpers": {[m
+       "version": "0.5.15",[m
+       "resolved": "https://registry.npmjs.org/@swc/helpers/-/helpers-0.5.15.tgz",[m
+[36m@@ -1287,11 +1363,16 @@[m
+       "version": "20.19.9",[m
+       "resolved": "https://registry.npmjs.org/@types/node/-/node-20.19.9.tgz",[m
+       "integrity": "sha512-cuVNgarYWZqxRJDQHEB58GEONhOK79QVR/qYx4S7kcUObQvUwvFnYxJuuHUKm2aieN9X3yZB4LZsuYNU1Qphsw==",[m
+[31m-      "dev": true,[m
+       "dependencies": {[m
+         "undici-types": "~6.21.0"[m
+       }[m
+     },[m
+[32m+[m[32m    "node_modules/@types/phoenix": {[m
+[32m+[m[32m      "version": "1.6.6",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@types/phoenix/-/phoenix-1.6.6.tgz",[m
+[32m+[m[32m      "integrity": "sha512-PIzZZlEppgrpoT2QgbnDU+MMzuR6BbCjllj0bM70lWoejMeNJAxCchxnv7J3XFkI8MpygtRpzXrIlmWUBclP5A==",[m
+[32m+[m[32m      "license": "MIT"[m
+[32m+[m[32m    },[m
+     "node_modules/@types/prismjs": {[m
+       "version": "1.26.5",[m
+       "resolved": "https://registry.npmjs.org/@types/prismjs/-/prismjs-1.26.5.tgz",[m
+[36m@@ -1327,6 +1408,15 @@[m
+       "integrity": "sha512-7gqG38EyHgyP1S+7+xomFtL+ZNHcKv6DwNaCZmJmo1vgMugyF3TCnXVg4t1uk89mLNwnLtnY3TpOpCOyp1/xHQ==",[m
+       "dev": true[m
+     },[m
+[32m+[m[32m    "node_modules/@types/ws": {[m
+[32m+[m[32m      "version": "8.18.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@types/ws/-/ws-8.18.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==",[m
+[32m+[m[32m      "license": "MIT",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "@types/node": "*"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "node_modules/@typescript-eslint/eslint-plugin": {[m
+       "version": "8.38.0",[m
+       "resolved": "https://registry.npmjs.org/@typescript-eslint/eslint-plugin/-/eslint-plugin-8.38.0.tgz",[m
+[36m@@ -4513,6 +4603,21 @@[m
+       "integrity": "sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==",[m
+       "dev": true[m
+     },[m
+[32m+[m[32m    "node_modules/isows": {[m
+[32m+[m[32m      "version": "1.0.7",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/isows/-/isows-1.0.7.tgz",[m
+[32m+[m[32m      "integrity": "sha512-I1fSfDCZL5P0v33sVqeTDSpcstAg/N+wF5HS033mogOVIp4B+oHC7oOCsA3axAbBSGTJ8QubbNmnIRN/h8U7hg==",[m
+[32m+[m[32m      "funding": [[m
+[32m+[m[32m        {[m
+[32m+[m[32m          "type": "github",[m
+[32m+[m[32m          "url": "https://github.com/sponsors/wevm"[m
+[32m+[m[32m        }[m
+[32m+[m[32m      ],[m
+[32m+[m[32m      "license": "MIT",[m
+[32m+[m[32m      "peerDependencies": {[m
+[32m+[m[32m        "ws": "*"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "node_modules/iterator.prototype": {[m
+       "version": "1.1.5",[m
+       "resolved": "https://registry.npmjs.org/iterator.prototype/-/iterator.prototype-1.1.5.tgz",[m
+[36m@@ -7478,6 +7583,12 @@[m
+         "node": ">=8.0"[m
+       }[m
+     },[m
+[32m+[m[32m    "node_modules/tr46": {[m
+[32m+[m[32m      "version": "0.0.3",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/tr46/-/tr46-0.0.3.tgz",[m
+[32m+[m[32m      "integrity": "sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==",[m
+[32m+[m[32m      "license": "MIT"[m
+[32m+[m[32m    },[m
+     "node_modules/trim-lines": {[m
+       "version": "3.0.1",[m
+       "resolved": "https://registry.npmjs.org/trim-lines/-/trim-lines-3.0.1.tgz",[m
+[36m@@ -7647,8 +7758,7 @@[m
+     "node_modules/undici-types": {[m
+       "version": "6.21.0",[m
+       "resolved": "https://registry.npmjs.org/undici-types/-/undici-types-6.21.0.tgz",[m
+[31m-      "integrity": "sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==",[m
+[31m-      "dev": true[m
+[32m+[m[32m      "integrity": "sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ=="[m
+     },[m
+     "node_modules/unified": {[m
+       "version": "11.0.5",[m
+[36m@@ -7855,6 +7965,22 @@[m
+         "url": "https://github.com/sponsors/wooorm"[m
+       }[m
+     },[m
+[32m+[m[32m    "node_modules/webidl-conversions": {[m
+[32m+[m[32m      "version": "3.0.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/webidl-conversions/-/webidl-conversions-3.0.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==",[m
+[32m+[m[32m      "license": "BSD-2-Clause"[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/whatwg-url": {[m
+[32m+[m[32m      "version": "5.0.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/whatwg-url/-/whatwg-url-5.0.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==",[m
+[32m+[m[32m      "license": "MIT",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "tr46": "~0.0.3",[m
+[32m+[m[32m        "webidl-conversions": "^3.0.0"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "node_modules/which": {[m
+       "version": "2.0.2",[m
+       "resolved": "https://registry.npmjs.org/which/-/which-2.0.2.tgz",[m
+[36m@@ -7964,6 +8090,27 @@[m
+         "node": ">=0.10.0"[m
+       }[m
+     },[m
+[32m+[m[32m    "node_modules/ws": {[m
+[32m+[m[32m      "version": "8.18.3",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/ws/-/ws-8.18.3.tgz",[m
+[32m+[m[32m      "integrity": "sha512-PEIGCY5tSlUt50cqyMXfCzX+oOPqN0vuGqWzbcJ2xvnkzkq46oOpz7dQaTDBdfICb4N14+GARUDw2XV2N4tvzg==",[m
+[32m+[m[32m      "license": "MIT",[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">=10.0.0"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "peerDependencies": {[m
+[32m+[m[32m        "bufferutil": "^4.0.1",[m
+[32m+[m[32m        "utf-8-validate": ">=5.0.2"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "peerDependenciesMeta": {[m
+[32m+[m[32m        "bufferutil": {[m
+[32m+[m[32m          "optional": true[m
+[32m+[m[32m        },[m
+[32m+[m[32m        "utf-8-validate": {[m
+[32m+[m[32m          "optional": true[m
+[32m+[m[32m        }[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "node_modules/yallist": {[m
+       "version": "5.0.0",[m
+       "resolved": "https://registry.npmjs.org/yallist/-/yallist-5.0.0.tgz",[m
+[1mdiff --git a/package.json b/package.json[m
+[1mindex 1a5c447..bd15fde 100644[m
+[1m--- a/package.json[m
+[1m+++ b/package.json[m
+[36m@@ -19,6 +19,7 @@[m
+     "test:install": "playwright install"[m
+   },[m
+   "dependencies": {[m
+[32m+[m[32m    "@supabase/supabase-js": "^2.53.0",[m
+     "@uiw/react-md-editor": "^4.0.8",[m
+     "next": "15.4.4",[m
+     "react": "19.1.0",[m
+[1mdiff --git a/playwright-report/index.html b/playwright-report/index.html[m
+[1mnew file mode 100644[m
+[1mindex 0000000..768f74c[m
+[1m--- /dev/null[m
+[1m+++ b/playwright-report/index.html[m
+[36m@@ -0,0 +1,77 @@[m
+[32m+[m
+[32m+[m
+[32m+[m[32m<!DOCTYPE html>[m
+[32m+[m[32m<html style='scrollbar-gutter: stable both-edges;'>[m
+[32m+[m[32m  <head>[m
+[32m+[m[32m    <meta charset='UTF-8'>[m
+[32m+[m[32m    <meta name='color-scheme' content='dark light'>[m
+[32m+[m[32m    <meta name='viewport' content='width=device-width, initial-scale=1.0'>[m
+[32m+[m[32m    <title>Playwright Test Report</title>[m
+[32m+[m[32m    <script type="module">var e1=Object.defineProperty;var t1=(l,s,r)=>s in l?e1(l,s,{enumerable:!0,configurable:!0,writable:!0,value:r}):l[s]=r;var Gt=(l,s,r)=>t1(l,typeof s!="symbol"?s+"":s,r);(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const c of document.querySelectorAll('link[rel="modulepreload"]'))a(c);new MutationObserver(c=>{for(const f of c)if(f.type==="childList")for(const d of f.addedNodes)d.tagName==="LINK"&&d.rel==="modulepreload"&&a(d)}).observe(document,{childList:!0,subtree:!0});function r(c){const f={};return c.integrity&&(f.integrity=c.integrity),c.referrerPolicy&&(f.referrerPolicy=c.referrerPolicy),c.crossOrigin==="use-credentials"?f.credentials="include":c.crossOrigin==="anonymous"?f.credentials="omit":f.credentials="same-origin",f}function a(c){if(c.ep)return;c.ep=!0;const f=r(c);fetch(c.href,f)}})();function n1(l){return l&&l.__esModule&&Object.prototype.hasOwnProperty.call(l,"default")?l.default:l}var bo={exports:{}},hi={},zo={exports:{}},he={};/**[m
+[32m+[m[32m * @license React[m
+[32m+[m[32m * react.production.min.js[m
+[32m+[m[32m *[m
+[32m+[m[32m * Copyright (c) Facebook, Inc. and its affiliates.[m
+[32m+[m[32m *[m
+[32m+[m[32m * This source code is licensed under the MIT license found in the[m
+[32m+[m[32m * LICENSE file in the root directory of this source tree.[m
+[32m+[m[32m */var Tf;function r1(){if(Tf)return he;Tf=1;var l=Symbol.for("react.element"),s=Symbol.for("react.portal"),r=Symbol.for("react.fragment"),a=Symbol.for("react.strict_mode"),c=Symbol.for("react.profiler"),f=Symbol.for("react.provider"),d=Symbol.for("react.context"),m=Symbol.for("react.forward_ref"),g=Symbol.for("react.suspense"),A=Symbol.for("react.memo"),x=Symbol.for("react.lazy"),k=Symbol.iterator;function I(R){return R===null||typeof R!="object"?null:(R=k&&R[k]||R["@@iterator"],typeof R=="function"?R:null)}var P={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},L=Object.assign,w={};function v(R,H,$){this.props=R,this.context=H,this.refs=w,this.updater=$||P}v.prototype.isReactComponent={},v.prototype.setState=function(R,H){if(typeof R!="object"&&typeof R!="function"&&R!=null)throw Error("setState(...): takes an object of state variables to update or a function which returns an object of state variables.");this.updater.enqueueSetState(this,R,H,"setState")},v.prototype.forceUpdate=function(R){this.updater.enqueueForceUpdate(this,R,"forceUpdate")};function E(){}E.prototype=v.prototype;function T(R,H,$){this.props=R,this.context=H,this.refs=w,this.updater=$||P}var M=T.prototype=new E;M.constructor=T,L(M,v.prototype),M.isPureReactComponent=!0;var F=Array.isArray,X=Object.prototype.hasOwnProperty,D={current:null},B={key:!0,ref:!0,__self:!0,__source:!0};function Q(R,H,$){var pe,me={},ge=null,Ee=null;if(H!=null)for(pe in H.ref!==void 0&&(Ee=H.ref),H.key!==void 0&&(ge=""+H.key),H)X.call(H,pe)&&!B.hasOwnProperty(pe)&&(me[pe]=H[pe]);var xe=arguments.length-2;if(xe===1)me.children=$;else if(1<xe){for(var Ce=Array(xe),Xe=0;Xe<xe;Xe++)Ce[Xe]=arguments[Xe+2];me.children=Ce}if(R&&R.defaultProps)for(pe in xe=R.defaultProps,xe)me[pe]===void 0&&(me[pe]=xe[pe]);return{$$typeof:l,type:R,key:ge,ref:Ee,props:me,_owner:D.current}}function G(R,H){return{$$typeof:l,type:R.type,key:H,ref:R.ref,props:R.props,_owner:R._owner}}function W(R){return typeof R=="object"&&R!==null&&R.$$typeof===l}function V(R){var H={"=":"=0",":":"=2"};return"$"+R.replace(/[=:]/g,function($){return H[$]})}var re=/\/+/g;function J(R,H){return typeof R=="object"&&R!==null&&R.key!=null?V(""+R.key):H.toString(36)}function ce(R,H,$,pe,me){var ge=typeof R;(ge==="undefined"||ge==="boolean")&&(R=null);var Ee=!1;if(R===null)Ee=!0;else switch(ge){case"string":case"number":Ee=!0;break;case"object":switch(R.$$typeof){case l:case s:Ee=!0}}if(Ee)return Ee=R,me=me(Ee),R=pe===""?"."+J(Ee,0):pe,F(me)?($="",R!=null&&($=R.replace(re,"$&/")+"/"),ce(me,H,$,"",function(Xe){return Xe})):me!=null&&(W(me)&&(me=G(me,$+(!me.key||Ee&&Ee.key===me.key?"":(""+me.key).replace(re,"$&/")+"/")+R)),H.push(me)),1;if(Ee=0,pe=pe===""?".":pe+":",F(R))for(var xe=0;xe<R.length;xe++){ge=R[xe];var Ce=pe+J(ge,xe);Ee+=ce(ge,H,$,Ce,me)}else if(Ce=I(R),typeof Ce=="function")for(R=Ce.call(R),xe=0;!(ge=R.next()).done;)ge=ge.value,Ce=pe+J(ge,xe++),Ee+=ce(ge,H,$,Ce,me);else if(ge==="object")throw H=String(R),Error("Objects are not valid as a React child (found: "+(H==="[object Object]"?"object with keys {"+Object.keys(R).join(", ")+"}":H)+"). If you meant to render a collection of children, use an array instead.");return Ee}function oe(R,H,$){if(R==null)return R;var pe=[],me=0;return ce(R,pe,"","",function(ge){return H.call($,ge,me++)}),pe}function ie(R){if(R._status===-1){var H=R._result;H=H(),H.then(function($){(R._status===0||R._status===-1)&&(R._status=1,R._result=$)},function($){(R._status===0||R._status===-1)&&(R._status=2,R._result=$)}),R._status===-1&&(R._status=0,R._result=H)}if(R._status===1)return R._result.default;throw R._result}var de={current:null},Y={transition:null},ee={ReactCurrentDispatcher:de,ReactCurrentBatchConfig:Y,ReactCurrentOwner:D};function U(){throw Error("act(...) is not supported in production builds of React.")}return he.Children={map:oe,forEach:function(R,H,$){oe(R,function(){H.apply(this,arguments)},$)},count:function(R){var H=0;return oe(R,function(){H++}),H},toArray:function(R){return oe(R,function(H){return H})||[]},only:function(R){if(!W(R))throw Error("React.Children.only expected to receive a single React element child.");return R}},he.Component=v,he.Fragment=r,he.Profiler=c,he.PureComponent=T,he.StrictMode=a,he.Suspense=g,he.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED=ee,he.act=U,he.cloneElement=function(R,H,$){if(R==null)throw Error("React.cloneElement(...): The argument must be a React element, but you passed "+R+".");var pe=L({},R.props),me=R.key,ge=R.ref,Ee=R._owner;if(H!=null){if(H.ref!==void 0&&(ge=H.ref,Ee=D.current),H.key!==void 0&&(me=""+H.key),R.type&&R.type.defaultProps)var xe=R.type.defaultProps;for(Ce in H)X.call(H,Ce)&&!B.hasOwnProperty(Ce)&&(pe[Ce]=H[Ce]===void 0&&xe!==void 0?xe[Ce]:H[Ce])}var Ce=arguments.length-2;if(Ce===1)pe.children=$;else if(1<Ce){xe=Array(Ce);for(var Xe=0;Xe<Ce;Xe++)xe[Xe]=arguments[Xe+2];pe.children=xe}return{$$typeof:l,type:R.type,key:me,ref:ge,props:pe,_owner:Ee}},he.createContext=function(R){return R={$$typeof:d,_currentValue:R,_currentValue2:R,_threadCount:0,Provider:null,Consumer:null,_defaultValue:null,_globalName:null},R.Provider={$$typeof:f,_context:R},R.Consumer=R},he.createElement=Q,he.createFactory=function(R){var H=Q.bind(null,R);return H.type=R,H},he.createRef=function(){return{current:null}},he.forwardRef=function(R){return{$$typeof:m,render:R}},he.isValidElement=W,he.lazy=function(R){return{$$typeof:x,_payload:{_status:-1,_result:R},_init:ie}},he.memo=function(R,H){return{$$typeof:A,type:R,compare:H===void 0?null:H}},he.startTransition=function(R){var H=Y.transition;Y.transition={};try{R()}finally{Y.transition=H}},he.unstable_act=U,he.useCallback=function(R,H){return de.current.us
