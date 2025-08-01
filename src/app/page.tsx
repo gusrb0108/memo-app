@@ -26,15 +26,23 @@ export default function Home() {
   const [isViewerOpen, setIsViewerOpen] = useState(false)
   const [viewingMemo, setViewingMemo] = useState<Memo | null>(null)
 
-  const handleCreateMemo = (formData: MemoFormData) => {
-    createMemo(formData)
-    setIsFormOpen(false)
+  const handleCreateMemo = async (formData: MemoFormData) => {
+    const result = await createMemo(formData)
+    if (result) {
+      setIsFormOpen(false)
+    } else {
+      alert('메모 저장에 실패했습니다. 다시 시도해주세요.')
+    }
   }
 
-  const handleUpdateMemo = (formData: MemoFormData) => {
+  const handleUpdateMemo = async (formData: MemoFormData) => {
     if (editingMemo) {
-      updateMemo(editingMemo.id, formData)
-      setEditingMemo(null)
+      const success = await updateMemo(editingMemo.id, formData)
+      if (success) {
+        setEditingMemo(null)
+      } else {
+        alert('메모 수정에 실패했습니다. 다시 시도해주세요.')
+      }
     }
   }
 
@@ -63,8 +71,21 @@ export default function Home() {
     setIsFormOpen(true)
   }
 
-  const handleDeleteFromViewer = (id: string) => {
-    deleteMemo(id)
+  const handleDeleteFromViewer = async (id: string) => {
+    const success = await deleteMemo(id)
+    if (success) {
+      setIsViewerOpen(false)
+      setViewingMemo(null)
+    } else {
+      alert('메모 삭제에 실패했습니다. 다시 시도해주세요.')
+    }
+  }
+
+  const handleDeleteMemo = async (id: string) => {
+    const success = await deleteMemo(id)
+    if (!success) {
+      alert('메모 삭제에 실패했습니다. 다시 시도해주세요.')
+    }
   }
 
   return (
@@ -114,7 +135,7 @@ export default function Home() {
           onSearchChange={searchMemos}
           onCategoryChange={filterByCategory}
           onEditMemo={handleEditMemo}
-          onDeleteMemo={deleteMemo}
+          onDeleteMemo={handleDeleteMemo}
           onViewMemo={handleViewMemo}
           stats={stats}
         />
