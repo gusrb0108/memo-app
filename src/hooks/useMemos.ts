@@ -126,7 +126,7 @@ export const useMemos = () => {
         memo =>
           memo.title.toLowerCase().includes(query) ||
           memo.content.toLowerCase().includes(query) ||
-          memo.tags.some(tag => tag.toLowerCase().includes(query))
+          memo.tags.some((tag: string) => tag.toLowerCase().includes(query))
       )
     }
 

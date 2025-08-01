@@ -154,7 +154,7 @@ export const supabaseUtils = {
       return allMemos.filter(memo => 
         memo.title.toLowerCase().includes(lowercaseQuery) ||
         memo.content.toLowerCase().includes(lowercaseQuery) ||
-        memo.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery))
+        memo.tags.some((tag: string) => tag.toLowerCase().includes(lowercaseQuery))
       )
     } catch (error) {
       console.error('Error searching memos in Supabase:', error)

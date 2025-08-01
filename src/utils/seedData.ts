@@ -64,23 +64,32 @@ export const sampleMemos: Memo[] = [
   },
 ]
 
-export const seedSampleData = () => {
+export const seedSampleData = async () => {
   // 기존 데이터가 없을 때만 샘플 데이터 추가
-  const existingMemos = localStorageUtils.getMemos()
+  const existingMemos = await localStorageUtils.getMemos()
   if (existingMemos.length === 0) {
-    localStorageUtils.saveMemos(sampleMemos)
+    // 각 샘플 메모를 개별적으로 추가
+    for (const memo of sampleMemos) {
+      await localStorageUtils.addMemo(memo)
+    }
     console.log('Sample data seeded successfully!')
     return true
   }
   return false
 }
 
-export const clearAllData = () => {
-  localStorageUtils.clearMemos()
+export const clearAllData = async () => {
+  await localStorageUtils.clearMemos()
   console.log('All data cleared!')
 }
 
-export const resetToSampleData = () => {
-  localStorageUtils.saveMemos(sampleMemos)
+export const resetToSampleData = async () => {
+  // 기존 데이터를 모두 삭제
+  await localStorageUtils.clearMemos()
+  
+  // 샘플 데이터를 개별적으로 추가
+  for (const memo of sampleMemos) {
+    await localStorageUtils.addMemo(memo)
+  }
   console.log('Data reset to sample data!')
 }
