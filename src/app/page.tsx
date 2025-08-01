@@ -5,6 +5,7 @@ import { useMemos } from '@/hooks/useMemos'
 import { Memo, MemoFormData } from '@/types/memo'
 import MemoList from '@/components/MemoList'
 import MemoForm from '@/components/MemoForm'
+import MemoViewer from '@/components/MemoViewer'
 
 export default function Home() {
   const {
@@ -22,6 +23,8 @@ export default function Home() {
 
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [editingMemo, setEditingMemo] = useState<Memo | null>(null)
+  const [isViewerOpen, setIsViewerOpen] = useState(false)
+  const [viewingMemo, setViewingMemo] = useState<Memo | null>(null)
 
   const handleCreateMemo = (formData: MemoFormData) => {
     createMemo(formData)
@@ -43,6 +46,25 @@ export default function Home() {
   const handleCloseForm = () => {
     setIsFormOpen(false)
     setEditingMemo(null)
+  }
+
+  const handleViewMemo = (memo: Memo) => {
+    setViewingMemo(memo)
+    setIsViewerOpen(true)
+  }
+
+  const handleCloseViewer = () => {
+    setIsViewerOpen(false)
+    setViewingMemo(null)
+  }
+
+  const handleEditFromViewer = (memo: Memo) => {
+    setEditingMemo(memo)
+    setIsFormOpen(true)
+  }
+
+  const handleDeleteFromViewer = (id: string) => {
+    deleteMemo(id)
   }
 
   return (
@@ -93,6 +115,7 @@ export default function Home() {
           onCategoryChange={filterByCategory}
           onEditMemo={handleEditMemo}
           onDeleteMemo={deleteMemo}
+          onViewMemo={handleViewMemo}
           stats={stats}
         />
       </main>
@@ -103,6 +126,15 @@ export default function Home() {
         onClose={handleCloseForm}
         onSubmit={editingMemo ? handleUpdateMemo : handleCreateMemo}
         editingMemo={editingMemo}
+      />
+
+      {/* 메모 뷰어 */}
+      <MemoViewer
+        memo={viewingMemo}
+        isOpen={isViewerOpen}
+        onClose={handleCloseViewer}
+        onEdit={handleEditFromViewer}
+        onDelete={handleDeleteFromViewer}
       />
     </div>
   )

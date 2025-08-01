@@ -6,9 +6,10 @@ interface MemoItemProps {
   memo: Memo
   onEdit: (memo: Memo) => void
   onDelete: (id: string) => void
+  onView: (memo: Memo) => void
 }
 
-export default function MemoItem({ memo, onEdit, onDelete }: MemoItemProps) {
+export default function MemoItem({ memo, onEdit, onDelete, onView }: MemoItemProps) {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
     return date.toLocaleDateString('ko-KR', {
@@ -32,11 +33,11 @@ export default function MemoItem({ memo, onEdit, onDelete }: MemoItemProps) {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6 hover:shadow-lg transition-shadow duration-200">
+    <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6 hover:shadow-lg transition-all duration-200 cursor-pointer group">
       {/* 헤더 */}
       <div className="flex justify-between items-start mb-3">
-        <div className="flex-1">
-          <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+        <div className="flex-1" onClick={() => onView(memo)}>
+          <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
             {memo.title}
           </h3>
           <div className="flex items-center gap-2">
@@ -55,7 +56,10 @@ export default function MemoItem({ memo, onEdit, onDelete }: MemoItemProps) {
         {/* 액션 버튼 */}
         <div className="flex gap-2 ml-4">
           <button
-            onClick={() => onEdit(memo)}
+            onClick={(e) => {
+              e.stopPropagation()
+              onEdit(memo)
+            }}
             className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
             title="편집"
           >
@@ -74,7 +78,8 @@ export default function MemoItem({ memo, onEdit, onDelete }: MemoItemProps) {
             </svg>
           </button>
           <button
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation()
               if (window.confirm('정말로 이 메모를 삭제하시겠습니까?')) {
                 onDelete(memo.id)
               }
@@ -100,7 +105,7 @@ export default function MemoItem({ memo, onEdit, onDelete }: MemoItemProps) {
       </div>
 
       {/* 내용 */}
-      <div className="mb-4">
+      <div className="mb-4" onClick={() => onView(memo)}>
         <p className="text-gray-700 text-sm leading-relaxed line-clamp-3">
           {memo.content}
         </p>
@@ -108,7 +113,7 @@ export default function MemoItem({ memo, onEdit, onDelete }: MemoItemProps) {
 
       {/* 태그 */}
       {memo.tags.length > 0 && (
-        <div className="flex gap-2 flex-wrap">
+        <div className="flex gap-2 flex-wrap" onClick={() => onView(memo)}>
           {memo.tags.map((tag, index) => (
             <span
               key={index}

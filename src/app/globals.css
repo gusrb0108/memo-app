@@ -39,3 +39,242 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* Markdown Editor Styles */
+.markdown-editor {
+  border: none !important;
+}
+
+.markdown-editor .w-md-editor {
+  background: transparent !important;
+}
+
+.markdown-editor .w-md-editor-text-container {
+  background: #ffffff !important;
+}
+
+.markdown-editor .w-md-editor-text {
+  color: #374151 !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+.markdown-editor .w-md-editor-preview {
+  background: #ffffff !important;
+  padding: 16px !important;
+}
+
+.markdown-editor .wmde-markdown {
+  background: transparent !important;
+  color: #374151 !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+.markdown-editor .wmde-markdown h1,
+.markdown-editor .wmde-markdown h2,
+.markdown-editor .wmde-markdown h3,
+.markdown-editor .wmde-markdown h4,
+.markdown-editor .wmde-markdown h5,
+.markdown-editor .wmde-markdown h6 {
+  color: #111827 !important;
+  margin-top: 24px !important;
+  margin-bottom: 16px !important;
+}
+
+.markdown-editor .wmde-markdown h1 {
+  font-size: 2em !important;
+  font-weight: 600 !important;
+}
+
+.markdown-editor .wmde-markdown h2 {
+  font-size: 1.5em !important;
+  font-weight: 600 !important;
+}
+
+.markdown-editor .wmde-markdown h3 {
+  font-size: 1.25em !important;
+  font-weight: 600 !important;
+}
+
+.markdown-editor .wmde-markdown p {
+  margin-bottom: 16px !important;
+}
+
+.markdown-editor .wmde-markdown ul,
+.markdown-editor .wmde-markdown ol {
+  margin-bottom: 16px !important;
+  padding-left: 32px !important;
+}
+
+.markdown-editor .wmde-markdown ul {
+  list-style-type: disc !important;
+}
+
+.markdown-editor .wmde-markdown ol {
+  list-style-type: decimal !important;
+}
+
+.markdown-editor .wmde-markdown ul ul {
+  list-style-type: circle !important;
+}
+
+.markdown-editor .wmde-markdown ul ul ul {
+  list-style-type: square !important;
+}
+
+.markdown-editor .wmde-markdown li {
+  display: list-item !important;
+  margin-bottom: 4px !important;
+}
+
+.markdown-editor .wmde-markdown blockquote {
+  border-left: 4px solid #e5e7eb !important;
+  margin: 16px 0 !important;
+  padding-left: 16px !important;
+  color: #6b7280 !important;
+}
+
+.markdown-editor .wmde-markdown code {
+  background: #f3f4f6 !important;
+  color: #d97706 !important;
+  padding: 2px 4px !important;
+  border-radius: 4px !important;
+  font-size: 0.875em !important;
+}
+
+.markdown-editor .wmde-markdown pre {
+  background: #f9fafb !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  overflow-x: auto !important;
+  margin: 16px 0 !important;
+}
+
+.markdown-editor .wmde-markdown pre code {
+  background: transparent !important;
+  color: #374151 !important;
+  padding: 0 !important;
+}
+
+/* MDEditor Toolbar Styles */
+.markdown-editor .w-md-editor-toolbar {
+  border-bottom: 1px solid #e5e7eb !important;
+  background: #f9fafb !important;
+  padding: 8px !important;
+}
+
+.markdown-editor .w-md-editor-toolbar-divider {
+  background: #e5e7eb !important;
+}
+
+.markdown-editor .w-md-editor-toolbar button {
+  color: #6b7280 !important;
+  border-radius: 4px !important;
+  padding: 4px 8px !important;
+}
+
+.markdown-editor .w-md-editor-toolbar button:hover {
+  background: #e5e7eb !important;
+  color: #374151 !important;
+}
+
+.markdown-editor .w-md-editor-toolbar button.active {
+  background: #dbeafe !important;
+  color: #2563eb !important;
+}
+
+/* Markdown Viewer Styles (for MemoViewer) */
+.wmde-markdown {
+  color: #374151 !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+.wmde-markdown h1,
+.wmde-markdown h2,
+.wmde-markdown h3,
+.wmde-markdown h4,
+.wmde-markdown h5,
+.wmde-markdown h6 {
+  color: #111827 !important;
+  margin-top: 24px !important;
+  margin-bottom: 16px !important;
+}
+
+.wmde-markdown h1 {
+  font-size: 2em !important;
+  font-weight: 600 !important;
+}
+
+.wmde-markdown h2 {
+  font-size: 1.5em !important;
+  font-weight: 600 !important;
+}
+
+.wmde-markdown h3 {
+  font-size: 1.25em !important;
+  font-weight: 600 !important;
+}
+
+.wmde-markdown p {
+  margin-bottom: 16px !important;
+}
+
+.wmde-markdown ul,
+.wmde-markdown ol {
+  margin-bottom: 16px !important;
+  padding-left: 32px !important;
+}
+
+.wmde-markdown ul {
+  list-style-type: disc !important;
+}
+
+.wmde-markdown ol {
+  list-style-type: decimal !important;
+}
+
+.wmde-markdown ul ul {
+  list-style-type: circle !important;
+}
+
+.wmde-markdown ul ul ul {
+  list-style-type: square !important;
+}
+
+.wmde-markdown li {
+  display: list-item !important;
+  margin-bottom: 4px !important;
+}
+
+.wmde-markdown blockquote {
+  border-left: 4px solid #e5e7eb !important;
+  margin: 16px 0 !important;
+  padding-left: 16px !important;
+  color: #6b7280 !important;
+}
+
+.wmde-markdown code {
+  background: #f3f4f6 !important;
+  color: #d97706 !important;
+  padding: 2px 4px !important;
+  border-radius: 4px !important;
+  font-size: 0.875em !important;
+}
+
+.wmde-markdown pre {
+  background: #f9fafb !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  overflow-x: auto !important;
+  margin: 16px 0 !important;
+}
+
+.wmde-markdown pre code {
+  background: transparent !important;
+  color: #374151 !important;
+  padding: 0 !important;
+}
